@@ -1,4 +1,5 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
 
 # Copyright 2017 Google Inc. All Rights Reserved.
 #
@@ -282,7 +283,7 @@ def detect_text(path):
     print('Texts:')
 
     for text in texts:
-        print('\n"{}"'.format(text.description))
+        print('\n"{}"'.format(text.description.encode('utf-8')))
 
         vertices = (['({},{})'.format(vertex.x, vertex.y)
                     for vertex in text.bounding_poly.vertices])
@@ -303,9 +304,10 @@ def detect_text_uri(uri):
     response = client.text_detection(image=image)
     texts = response.text_annotations
     print('Texts:')
+#    print(texts.encode('utf-8'))
 
     for text in texts:
-        print('\n"{}"'.format(text.description))
+        print('\n"{}"'.format(text.description.encode('utf-8')))
 
         vertices = (['({},{})'.format(vertex.x, vertex.y)
                     for vertex in text.bounding_poly.vertices])
